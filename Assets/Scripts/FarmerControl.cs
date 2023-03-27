@@ -18,7 +18,7 @@ public class FarmerControl : MonoBehaviour, ISelectable
 
     public void Select()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Soy yo, " + gameObject.name);
     }
 
 }
