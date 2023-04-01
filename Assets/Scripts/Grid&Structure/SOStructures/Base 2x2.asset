@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5854fc291063b934e9753ceee3bd2dba, type: 3}
+  m_Name: Base 2x2
+  m_EditorClassIdentifier: 
+  name: Base 2x2
+  sprite: {fileID: 0}
+  building: {fileID: 3608825934698733947, guid: fb10213d4721b0549a0d191a5df106f5, type: 3}
+  size: 0200000002000000
+  price: 100
+  constructionTime: 10
+  initialLevelUpPrice: 50
+  initialLevelUpTime: 10
