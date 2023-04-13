@@ -87,10 +87,13 @@ public class Structure : MonoBehaviour
     }
     public void BuildUp() // we don't use costructionTime :D
     {
-        if (level == 0)
+        if (transform.GetComponentInParent<ConstructionZone>().Construct()) // need to clean old cells
         {
-            level = 1;
-            SetValues();
+            if (level == 0)
+            {
+                level = 1;
+                SetValues();
+            }
         }
     }
     void FinishLevelUp(uint key_)

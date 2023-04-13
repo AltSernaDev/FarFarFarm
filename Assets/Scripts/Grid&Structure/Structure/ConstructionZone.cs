@@ -5,6 +5,7 @@ using UnityEngine;
 //[RequireComponent(typeof(BoxCollider))]
 public class ConstructionZone : MonoBehaviour
 {
+    public static ConstructionZone Instance;
     Camera camera;
     Lean.Touch.LeanDragTranslate dragObject;
     Lean.Touch.LeanDragCamera dragCamera;
@@ -16,17 +17,29 @@ public class ConstructionZone : MonoBehaviour
     int[] size;
     GridManager gridManager;
 
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+            Destroy(this);
+        else
+            Instance = this;
+    }
+
     private void Start()
     {
         gridManager = GridManager.Instance;
-        childDefaultPosition = transform.GetChild(0).position;
 
         camera = Camera.main;
         dragCamera = camera.gameObject.GetComponentInParent<Lean.Touch.LeanDragCamera>();
         dragObject = gameObject.GetComponent<Lean.Touch.LeanDragTranslate>();
-        size = gameObject.GetComponentInChildren<Structure>().structureSo.size;
+        //size = gameObject.GetComponentInChildren<Structure>().structureSo.size;
 
         //SetBoxCollider();
+    }
+    
+    public void ChildPos(Vector3 pos)
+    {
+        childDefaultPosition = pos;
     }
 
     private void LateUpdate()
@@ -92,16 +105,20 @@ public class ConstructionZone : MonoBehaviour
 
     }
 
-    public void Construct()
+    public bool Construct()
     {
         Cell[] cells;
 
         dragCamera.enabled = true;
         dragObject.enabled = false;
+        size = gameObject.GetComponentInChildren<Structure>().structureSo.size;
 
         cells = gridManager.PositionToCell(transform.GetChild(0).position, size);
         if (cells == null)
-            return;
+            return false;
+
+        if (gameObject.GetComponentInChildren<Structure>().Level == 0 && !ResoucesManager.Instance.PayCash(gameObject.GetComponentInChildren<Structure>().structureSo.price))
+            return false;
 
         cells[0].structure = gameObject.GetComponentInChildren<Structure>();
         for (int i = 0; i < cells.Length; i++)
@@ -109,23 +126,30 @@ public class ConstructionZone : MonoBehaviour
             cells[i].occupied = true;
         }
 
-        if (gameObject.GetComponentInChildren<Structure>().Level <= 0)
+        /*if (gameObject.GetComponentInChildren<Structure>().Level <= 0)
         {
             gameObject.GetComponentInChildren<Structure>().BuildUp();
-        }
+        }*/
 
-
-        Destroy(gameObject.GetComponentInChildren<Canvas>().gameObject);
         transform.GetChild(0).parent = null;
-        Destroy(gameObject);
+        ConstructionManager.Instance.Unselect_(true);
+
+        return true;
     }
     public void Cancel()
     {
         dragCamera.enabled = true;
         dragObject.enabled = false;
 
-        Destroy(gameObject.GetComponentInChildren<Canvas>().gameObject);
-        Destroy(gameObject);
+        //throw to default position
+
+        if (gameObject.GetComponentInChildren<Structure>().Level == 0)
+        {
+            Destroy(transform.GetChild(0).gameObject);
+        }
+
+        transform.GetChild(0).parent = null;
+        ConstructionManager.Instance.Unselect_(true);
     }
 
     private void SetBoxCollider()
@@ -138,14 +162,17 @@ public class ConstructionZone : MonoBehaviour
     }
     private void Grid()
     {
-        childPosition.x = Mathf.Round(transform.position.x);
-        childPosition.y = 0;
-        childPosition.z = Mathf.Round(transform.position.z);
+        if (gameObject.GetComponentInChildren<Structure>() != null)
+        {
+            childPosition.x = Mathf.Round(transform.position.x);
+            childPosition.y = 0;
+            childPosition.z = Mathf.Round(transform.position.z);
 
-        transform.GetChild(0).position = childPosition;
+            transform.GetChild(0).position = childPosition;
 
-        if (dragCamera.enabled)
-            transform.position = childPosition;
+            if (dragCamera.enabled)
+                transform.position = childPosition;
+        }
     }
     private void FixPosition()
     {

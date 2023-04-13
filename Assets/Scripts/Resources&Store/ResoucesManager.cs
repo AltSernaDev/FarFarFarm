@@ -82,6 +82,7 @@ public class ResoucesManager : MonoBehaviour
     }
     public bool PayCash(int amount)
     {
+        print(cash + " - " + amount);
         if (amount > 0 && (cash - amount) >= 0)
         {
             cash -= amount;
