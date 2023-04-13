@@ -33,21 +33,11 @@ public class ResoucesManager : MonoBehaviour
 
     public void AddGold_TEMP(int amount)
     {
-        if (amount > 0) //if max
-        {
-            gold += amount;
-            if (OnValueChange != null)
-                OnValueChange(cash, gold);
-        }
+        AddGold(amount);
     }
     public void AddCash_TEMP(int amount)
     {
-        if (amount > 0) //if max
-        {
-            cash += amount;
-            if (OnValueChange != null)
-                OnValueChange(cash, gold);
-        }
+        AddCash(amount);
     }
 
     public bool AddGold(int amount)
@@ -57,8 +47,10 @@ public class ResoucesManager : MonoBehaviour
             gold += amount;
             if (OnValueChange != null)
                 OnValueChange(cash, gold);
+            print("Transaction end successfully :)");
             return true;
         }
+        print("An error just happend, the transaction was not completed :( \nCheck your funds and try again");
         return false;
     }
     public bool PayGold(int amount)
@@ -68,8 +60,10 @@ public class ResoucesManager : MonoBehaviour
             gold -= amount;
             if (OnValueChange != null)
                 OnValueChange(cash, gold);
+            print("Transaction end successfully :)");
             return true;
         }
+        print("An error just happend, the transaction was not completed :( \nCheck your funds and try again");
         return false;
     }
 
@@ -80,8 +74,10 @@ public class ResoucesManager : MonoBehaviour
             cash += amount;
             if (OnValueChange != null)
                 OnValueChange(cash, gold);
+            print("Transaction end successfully :)");
             return true;
         }
+        print("An error just happend, the transaction was not completed :( \nCheck your funds and try again");
         return false;
     }
     public bool PayCash(int amount)
@@ -91,8 +87,10 @@ public class ResoucesManager : MonoBehaviour
             cash -= amount;
             if (OnValueChange != null)
                 OnValueChange(cash, gold);
+            print("Transaction end successfully :)");
             return true;
         }
+        print("An error just happend, the transaction was not completed :( \nCheck your funds and try again");
         return false;
     }
 }

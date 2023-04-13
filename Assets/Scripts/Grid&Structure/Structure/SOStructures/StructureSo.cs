@@ -14,5 +14,8 @@ public class StructureSo : ScriptableObject
     public float constructionTime = 10;
 
     public int initialLevelUpPrice = 50;
-    public float initialLevelUpTime = 10;
+    public int initialLevelUpTime = 10;
+
+    public float levelUpPriceMultiplier = 0.5f;
+    public float levelUpTimeMultiplier = 0.5f;
 }
