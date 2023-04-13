@@ -570,6 +570,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallHouse_02
       objectReference: {fileID: 0}
+    - target: {fileID: 1158171774048920561, guid: 59100676d53f51c488a50c4e4a7ec712,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59100676d53f51c488a50c4e4a7ec712, type: 3}
 --- !u!1001 &1515306357218882270

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 149128832284270598}
   - component: {fileID: 7176347146201923515}
   - component: {fileID: 3360330521554443660}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FarmerBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,8 +92,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7841823428010392778}
-  m_Layer: 0
-  m_Name: Farmer 5
+  - component: {fileID: 4876081137599339553}
+  - component: {fileID: -172676663920603542}
+  m_Layer: 3
+  m_Name: Farmer-11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,7 +109,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3879393363057534352}
   m_LocalRotation: {x: -0, y: 0.70710194, z: -0, w: 0.7071117}
-  m_LocalPosition: {x: 1.0163882, y: 0.600744, z: -26.368834}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -116,6 +118,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 89.999, z: 0}
+--- !u!114 &4876081137599339553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3879393363057534352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75a8da7c23aae1545abe8f408be74ac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!136 &-172676663920603542
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3879393363057534352}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.13430305
+  m_Height: 0.5127408
+  m_Direction: 1
+  m_Center: {x: 0.0074702054, y: 0.24362972, z: 0.0018658489}
 --- !u!1 &7413603609796607860
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +155,7 @@ GameObject:
   - component: {fileID: 9165451894489763896}
   - component: {fileID: 945806336496886357}
   - component: {fileID: 8621681742527577217}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hat1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

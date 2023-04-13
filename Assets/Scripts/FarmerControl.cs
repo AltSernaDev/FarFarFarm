@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class FarmerControl : MonoBehaviour, ISelectable
 {
+    bool placed;
+
     private void Start()
     {
         // Registro de farmer en array
-        for (int i = 0; i < FarmersManager.farmerCtrl.Length; i++)
+        for (int i = 0; i < FarmersManager.FarmManagerSingleton.farmerCtrl.Length; i++)
         {
-            if (FarmersManager.farmerCtrl[i] != this && FarmersManager.farmerCtrl[i] == null)
+            if (FarmersManager.FarmManagerSingleton.farmerCtrl[i] != this 
+                && FarmersManager.FarmManagerSingleton.farmerCtrl[i] == null && !placed)
             {
-                FarmersManager.farmerCtrl[i] = this;
+                placed= true;
+                FarmersManager.FarmManagerSingleton.farmerCtrl[i] = this; // ESTE ES EL SUB
             }
         }
     }
