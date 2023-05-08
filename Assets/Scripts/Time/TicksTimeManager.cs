@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class TicksTimeManager : MonoBehaviour
 {
-    [SerializeField] float ticksPerSecond = 2;
+    private float ticksPerSecond = 2;
     float tickMaxTime;
 
     float tickTimer = 0;
 
     public static TicksTimeManager Instance;
+
+    public float TicksPerSecond { get => ticksPerSecond; }
 
     public delegate void TicksUpdate();
     public static event TicksUpdate OnTicksUpdate;

@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Base 2x2
   sprite: {fileID: 0}
-  building: {fileID: 3608825934698733947, guid: fb10213d4721b0549a0d191a5df106f5, type: 3}
+  building: {fileID: 5175908379436387361, guid: d274f9f1917759748a507a7183c900b1,
+    type: 3}
   size: 0200000002000000
   price: 100
   constructionTime: 10
   initialLevelUpPrice: 50
   initialLevelUpTime: 10
+  levelUpPriceMultiplier: 0.5
+  levelUpTimeMultiplier: 0.5

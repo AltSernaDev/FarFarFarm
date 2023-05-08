@@ -45,7 +45,7 @@ public class StructureUI : MonoBehaviour
                 progressTime = DateTime.Now - levelUpDate;
                 progress = (float)(progressTime.TotalSeconds);
                 progress = progress / structure.LevelUpTime;
-                levelTimeText.GetComponent<TMP_Text>().text = ((levelUpDate + new TimeSpan(0, 0, structure.LevelUpTime)) - DateTime.Now).Seconds.ToString();
+                levelTimeText.GetComponent<TMP_Text>().text = (((levelUpDate + new TimeSpan(0, 0, structure.LevelUpTime)) - DateTime.Now).Seconds + 1).ToString();
                 levelUpSlider.value = progress;
 
             }
@@ -64,8 +64,8 @@ public class StructureUI : MonoBehaviour
             //levelUpButton.SetActive(true);
             levelText.SetActive(true);
         }
-
-        if (ConstructionManager.Instance.constructionMode)
+        
+        if (ConstructionManager.Instance.constructionMode && structure.LevelUpDate == null)
         {
             if (ConstructionManager.Instance.currentStructure == structure)
             {
