@@ -13,8 +13,11 @@ public class Structure : MonoBehaviour
 
     GameObject building;
 
+    IndividualCharacterControl buildFarm;
+
     uint? levelUpEventKey = null;
     DateTime? levelUpDate = null;
+
 
     public int LevelUpPrice { get => levelUpPrice; }
     public int Level { get => level; }
@@ -78,6 +81,9 @@ public class Structure : MonoBehaviour
 
         if (levelUpEventKey == null)
         {
+            buildFarm = FarmersAndBuildersManager.SingletonInstance.FindBuilder();
+            buildFarm.BuildingLevelUp(this);
+
             levelUpEventKey = TimeEventsManager.Instance.CreateNewKey();
             TimeEventsManager.Instance.CreateTimeEvent((uint)levelUpEventKey, new TimeSpan(0, 0, levelUpTime));
             levelUpDate = DateTime.Now;
@@ -106,6 +112,9 @@ public class Structure : MonoBehaviour
                 levelUpEventKey = null;
                 levelUpDate = null;
                 SetValues();
+
+                buildFarm.FinishingLevelUp();
+                buildFarm = null;
             }
         }
     }
