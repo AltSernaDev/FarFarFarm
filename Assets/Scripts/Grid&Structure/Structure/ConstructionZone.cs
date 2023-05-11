@@ -14,9 +14,11 @@ public class ConstructionZone : MonoBehaviour
     Ray ray;
     RaycastHit hit;
 
-    Vector3 childPosition, traslatePosition, childDefaultPosition;                          /////////////////////////////////////////////////
+    Vector3 childPosition, traslatePosition;                          /////////////////////////////////////////////////
     int[] size;
     GridManager gridManager;
+
+    Cell[] currentCells, newCells;
 
     private void Awake()
     {
@@ -43,14 +45,13 @@ public class ConstructionZone : MonoBehaviour
         dragCamera = camera.gameObject.GetComponentInParent<Lean.Touch.LeanDragCamera>();
         dragObject = gameObject.GetComponent<Lean.Touch.LeanDragTranslate>();
 
-        //size = gameObject.GetComponentInChildren<Structure>().structureSo.size;
-
         //SetBoxCollider();
     }
 
     public void ChildPos(Vector3 pos)                                                       //////////////////////////////////////////////////////
     {
-        childDefaultPosition = pos;
+        size = gameObject.GetComponentInChildren<Structure>().structureSo.size;
+        currentCells = gridManager.PositionToCells(pos, size, false);
     }
 
     void OnTouch(Vector3 position_)
@@ -72,25 +73,40 @@ public class ConstructionZone : MonoBehaviour
         dragObject.enabled = false;
     }
 
+    //construction
     public bool Construct()
     {
-        Cell[] cells;
-
         dragCamera.enabled = true;
         dragObject.enabled = false;
+
         size = gameObject.GetComponentInChildren<Structure>().structureSo.size;
 
-        cells = gridManager.PositionToCell(transform.GetChild(0).position, size);
-        if (cells == null)
+        //clean old position 
+        if (gameObject.GetComponentInChildren<Structure>().Level != 0)
+        {
+            currentCells[0].structure = null;
+
+            for (int i = 0; i < currentCells.Length; i++)
+            {
+                currentCells[i].occupied = false;
+            }
+        }
+
+        //check new position
+        newCells = gridManager.PositionToCells(transform.GetChild(0).position, size, true);
+        if (newCells == null)
             return false;
 
+        //pay
         if (gameObject.GetComponentInChildren<Structure>().Level == 0 && !ResoucesManager.Instance.PayCash(gameObject.GetComponentInChildren<Structure>().structureSo.price))
             return false;
 
-        cells[0].structure = gameObject.GetComponentInChildren<Structure>();
-        for (int i = 0; i < cells.Length; i++)
+
+        //set new position
+        newCells[0].structure = gameObject.GetComponentInChildren<Structure>();
+        for (int i = 0; i < newCells.Length; i++)
         {
-            cells[i].occupied = true;
+            newCells[i].occupied = true;
         }
 
         /*if (gameObject.GetComponentInChildren<Structure>().Level <= 0)
@@ -98,7 +114,7 @@ public class ConstructionZone : MonoBehaviour
             gameObject.GetComponentInChildren<Structure>().BuildUp();
         }*/
 
-        ConstructionManager.Instance.Unselect_(true);
+        ConstructionManager.Instance.Unselect_();
 
         return true;
     }
@@ -107,16 +123,25 @@ public class ConstructionZone : MonoBehaviour
         dragCamera.enabled = true;
         dragObject.enabled = false;
 
-        //throw to default position
-
         if (gameObject.GetComponentInChildren<Structure>().Level == 0)
         {
             Destroy(transform.GetChild(0).gameObject);
         }
+        else
+        {
+            transform.GetChild(0).position = currentCells[0].transform.position;
 
-        ConstructionManager.Instance.Unselect_(true);
+            currentCells[0].structure = gameObject.GetComponentInChildren<Structure>();
+            for (int i = 0; i < newCells.Length; i++)
+            {
+                currentCells[i].occupied = true;
+            }
+        }
+
+        ConstructionManager.Instance.Unselect_();
     }
 
+    //drag
     private void SetBoxCollider()
     {
         size = gameObject.GetComponentInChildren<Structure>().structureSo.size;

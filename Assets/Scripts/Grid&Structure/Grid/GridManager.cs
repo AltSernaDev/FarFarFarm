@@ -66,7 +66,7 @@ public class GridManager : MonoBehaviour
         }
     }
 
-    public Cell[] PositionToCell(Vector3 woldPosition, int[] size_)
+    public Cell[] PositionToCells(Vector3 woldPosition, int[] size_, bool check)
     {
         Cell[] cells;
 
@@ -96,7 +96,8 @@ public class GridManager : MonoBehaviour
                 currentGrid_ = grids[(int)globalCellX / gridSize[0], (int)globalCellY / gridSize[0]];
                 currentCell_ = currentGrid_.cells[(int)(globalCellX % gridSize[0]), (int)(globalCellY % gridSize[0])];
 
-                if (currentCell_.occupied == true || currentGrid_.Unlock == false)
+                //if ((currentCell_.occupied || !currentGrid_.Unlock) && check || !currentGrid_.Unlock && !check)t
+                if (!currentGrid_.Unlock || (currentCell_.occupied && check))
                     return null;
 
                 cells[k] = currentCell_;

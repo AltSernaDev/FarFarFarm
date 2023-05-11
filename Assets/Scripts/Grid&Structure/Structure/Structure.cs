@@ -67,6 +67,11 @@ public class Structure : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void Cancel()
+    {
+        ConstructionZone.Instance.Cancel();
+    }
+
     public void LevelUp()
     {
         if (level == 0)
@@ -81,8 +86,10 @@ public class Structure : MonoBehaviour
 
         if (levelUpEventKey == null)
         {
+            /*
             buildFarm = FarmersAndBuildersManager.SingletonInstance.FindBuilder();
             buildFarm.BuildingLevelUp(this);
+            */
 
             levelUpEventKey = TimeEventsManager.Instance.CreateNewKey();
             TimeEventsManager.Instance.CreateTimeEvent((uint)levelUpEventKey, new TimeSpan(0, 0, levelUpTime));
@@ -113,8 +120,8 @@ public class Structure : MonoBehaviour
                 levelUpDate = null;
                 SetValues();
 
-                buildFarm.FinishingLevelUp();
-                buildFarm = null;
+                /*buildFarm.FinishingLevelUp();
+                buildFarm = null;*/
             }
         }
     }

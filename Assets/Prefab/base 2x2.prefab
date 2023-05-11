@@ -1040,7 +1040,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7630942870350616435}
         m_TargetAssemblyTypeName: Structure, Assembly-CSharp
-        m_MethodName: Demolish
+        m_MethodName: Cancel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

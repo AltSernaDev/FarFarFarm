@@ -64,10 +64,10 @@ public class StructureUI : MonoBehaviour
             //levelUpButton.SetActive(true);
             levelText.SetActive(true);
         }
-        
+
         if (ConstructionManager.Instance.constructionMode && structure.LevelUpDate == null)
         {
-            if (ConstructionManager.Instance.currentStructure == structure)
+            if (ConstructionManager.Instance.selectStructure == structure)
             {
                 yesButton.gameObject.SetActive(true);
                 noButton.gameObject.SetActive(true);

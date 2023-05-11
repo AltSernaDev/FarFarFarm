@@ -5,6 +5,7 @@ using UnityEngine;
 public class ConstructionManager : MonoBehaviour
 {
     public static ConstructionManager Instance;
+
     [SerializeField] float selectTime = 0.75f;
 
     Ray ray;
@@ -16,7 +17,8 @@ public class ConstructionManager : MonoBehaviour
     public bool constructionMode = false;
 
     [SerializeField] ConstructionZone constructionZone;
-    public Structure currentStructure;
+    public Structure selectStructure;
+    Structure currentStructure;
 
     private void Awake()
     {
@@ -30,112 +32,91 @@ public class ConstructionManager : MonoBehaviour
         camera = Camera.main;
         timer = 0;
 
-        Unselect_(true);
+        Unselect_();
         if (constructionZone.gameObject.GetComponentInChildren<Structure>() != null)
         {
             currentStructure = constructionZone.gameObject.GetComponentInChildren<Structure>();
-            Select_(false); 
+            Select_(); 
         }
     }
-    private void Update()
+    private void OnEnable()
     {
+        InputsManager.OnInputUpdate += OnTouch;
+    }
+    private void OnDisable()
+    {
+        InputsManager.OnInputUpdate -= OnTouch;
+    }
+
+    void OnTouch(Vector3 position_)
+    {
+
 #if UNITY_ANDROID && !UNITY_EDITOR
-        if (Input.touchCount == 1)
-        {
-            if (Input.GetTouch(0).phase == TouchPhase.Stationary)
-            {
-                ray = camera.ScreenPointToRay(Input.GetTouch(0).position);
-                if (Physics.Raycast(ray, out hit))
-                {
-                    currentStructure = hit.transform.gameObject.GetComponentInParent<Structure>();
-                    if (currentStructure.Level > 0)
-                    {
-                        if (timer <= selectTime)
-                            timer += Time.deltaTime;
-                    }
-                    else
-                        timer = 0;
-                }
-                else
-                    timer = 0;
-            }
-            else
-                timer = 0;
-        }
-        else
-            timer = 0;
+        if (Input.GetTouch(0).phase == TouchPhase.Stationary)
 #endif
 #if UNITY_EDITOR
-        if (Input.GetButton("Fire1"))
-        {
-            ray = camera.ScreenPointToRay(Input.mousePosition);
+        if (true)
+#endif
+            {
+            ray = camera.ScreenPointToRay(position_);
+
             if (Physics.Raycast(ray, out hit))
             {
                 if (hit.transform.gameObject.GetComponentInParent<Structure>() != null)
                 {
+                    if (currentStructure != hit.transform.gameObject.GetComponentInParent<Structure>())
+                        timer = 0;
+
                     currentStructure = hit.transform.gameObject.GetComponentInParent<Structure>();
+
                     if (currentStructure.Level > 0)
                     {
                         if (timer <= selectTime)
                             timer += Time.deltaTime;
+                        else
+                            Select_();
+                        return;
                     }
-                    else
-                        timer = 0;
                 }
-                else
-                    timer = 0;
             }
-            else
-                timer = 0;
-        }
-        else
             timer = 0;
-#endif
-        print(timer);
-        if (timer > selectTime)
-            Select_(constructionMode);
+        }       
     }
 
-    void Select_(bool select)
+    public void Select_()
     {
-        if (select == true)
-            return;
-        else
+        if (selectStructure == null)
         {
+            selectStructure = currentStructure;
+
             constructionMode = true;
-            constructionZone.gameObject.transform.position = currentStructure.gameObject.transform.position;
-            currentStructure.gameObject.transform.SetParent(constructionZone.gameObject.transform);
+            constructionZone.gameObject.transform.position = selectStructure.gameObject.transform.position;
+            selectStructure.gameObject.transform.SetParent(constructionZone.gameObject.transform);
 
-            constructionZone.ChildPos(currentStructure.gameObject.transform.position);
+            constructionZone.ChildPos(selectStructure.transform.position);
         }
     }
-    public void Unselect_(bool select)
+    public void Unselect_()
     {
-        if (select == false)
-            return;
-        else
+        constructionMode = false;
+        timer = 0;
+
+        if (selectStructure != null)
         {
-            constructionMode = false;
-            timer = 0;
-
-            if (currentStructure != null)
-            {
-                currentStructure.gameObject.transform.SetParent(null);
-                currentStructure = null;
-            }
-
-            constructionZone.gameObject.transform.position = Vector3.zero;
+            selectStructure.gameObject.transform.SetParent(null);
+            selectStructure = null;
         }
     }
     public void Instanciate2x2_TEMP(GameObject a)
     {
-        if (currentStructure != null)
+        if (selectStructure != null)
         {
-            if (currentStructure.Level == 0)
-                Destroy(currentStructure.gameObject);
-            currentStructure = null;
+            if (selectStructure.Level == 0)
+                Destroy(selectStructure.gameObject);
+            Unselect_();
         }
         currentStructure = Instantiate(a).GetComponent<Structure>();
-        Select_(false);
+        Select_();
+        print(selectStructure.gameObject.transform.parent.name);
     }
 }
