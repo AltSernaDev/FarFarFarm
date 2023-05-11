@@ -86,6 +86,8 @@ public class Structure : MonoBehaviour
 
         if (levelUpEventKey == null)
         {
+            ConstructionZone.Instance.Cancel();
+
             /*
             buildFarm = FarmersAndBuildersManager.SingletonInstance.FindBuilder();
             buildFarm.BuildingLevelUp(this);
