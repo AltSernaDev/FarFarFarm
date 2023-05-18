@@ -50,14 +50,14 @@ public class ConstructionManager : MonoBehaviour
 
     void OnTouch(Vector3 position_)
     {
-
+/*
 #if UNITY_ANDROID && !UNITY_EDITOR
         if (Input.GetTouch(0).phase == TouchPhase.Stationary)
 #endif
 #if UNITY_EDITOR
         if (true)
 #endif
-            {
+        {*/
             ray = camera.ScreenPointToRay(position_);
 
             if (Physics.Raycast(ray, out hit))
@@ -80,7 +80,7 @@ public class ConstructionManager : MonoBehaviour
                 }
             }
             timer = 0;
-        }       
+        //}       
     }
 
     public void Select_()
