@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class ResoucesManager : MonoBehaviour
+public class ResoucesManager : MonoBehaviour, IDataPersistence
 {
     public static ResoucesManager Instance;
 
@@ -22,8 +22,6 @@ public class ResoucesManager : MonoBehaviour
             Destroy(this);
         else
             Instance = this;
-
-        //load resouces
     }
 
     private void Start()
@@ -93,5 +91,23 @@ public class ResoucesManager : MonoBehaviour
         }
         print("An error just happend, the transaction was not completed :( \nCheck your funds and try again");
         return false;
+    }
+
+    public void Save()
+    {
+        PersistenceManager.Instance.data.Gold = gold;
+        PersistenceManager.Instance.data.Cash = cash;
+
+        if (OnValueChange != null)
+            OnValueChange(cash, gold);
+    }
+
+    public void Load()
+    {
+        gold = PersistenceManager.Instance.data.Gold;
+        cash = PersistenceManager.Instance.data.Cash;
+
+        if (OnValueChange != null)
+            OnValueChange(cash, gold);
     }
 }

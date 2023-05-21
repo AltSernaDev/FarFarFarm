@@ -1991,10 +1991,10 @@ GameObject:
   - component: {fileID: 837834792}
   - component: {fileID: 837834791}
   - component: {fileID: 837834794}
-  - component: {fileID: 837834795}
   - component: {fileID: 837834796}
   - component: {fileID: 837834797}
   - component: {fileID: 837834798}
+  - component: {fileID: 837834799}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2054,18 +2054,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17d15c45746f47d4c8ae71a1cb6db448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &837834795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 837834790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e6ee86547d9ec4459c8868668729b95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &837834796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2106,6 +2094,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f40a446d5df8fdc4a981c6a647af7bcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &837834799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837834790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d9003ae1d0c244fa3e3993fae6977f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+    Gold: 0
+    Cash: 0
+  SaveName: Save1
 --- !u!1 &856691606
 GameObject:
   m_ObjectHideFlags: 0
