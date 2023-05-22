@@ -4,7 +4,7 @@ using UnityEngine;
 //using static UnityEditor.ObjectChangeEventStream;
 
 public class FarmersAndBuildersManager : MonoBehaviour
-{/*
+{
     public static GameObject[] farmer;
     public static FarmersAndBuildersManager SingletonInstance;
     public IndividualCharacterControl[] farmerCtrl = new IndividualCharacterControl[13];
@@ -52,5 +52,5 @@ public class FarmersAndBuildersManager : MonoBehaviour
         }
 
         return character;
-    }*/
+    }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class IndividualCharacterControl : MonoBehaviour//, ISelectable
-{/*
+{
     bool placed;
     [SerializeField] bool builder;
     public bool busy= false;
@@ -81,5 +81,5 @@ public class IndividualCharacterControl : MonoBehaviour//, ISelectable
         //Builder ya no está BUSY
         //builder = null; // se elimina referencia de su builder
     }
-    */
+    
 }

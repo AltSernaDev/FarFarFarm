@@ -88,10 +88,10 @@ public class Structure : MonoBehaviour
         {
             ConstructionZone.Instance.Cancel();
 
-            /*
+            ////// Comentado ///////
             buildFarm = FarmersAndBuildersManager.SingletonInstance.FindBuilder();
             buildFarm.BuildingLevelUp(this);
-            */
+            ////// Comentado ///////
 
             levelUpEventKey = TimeEventsManager.Instance.CreateNewKey();
             TimeEventsManager.Instance.CreateTimeEvent((uint)levelUpEventKey, new TimeSpan(0, 0, levelUpTime));
@@ -122,8 +122,10 @@ public class Structure : MonoBehaviour
                 levelUpDate = null;
                 SetValues();
 
-                /*buildFarm.FinishingLevelUp();
-                buildFarm = null;*/
+                ////// Comentado ///////
+                buildFarm.FinishingLevelUp();
+                buildFarm = null;
+                ////// Comentado ///////
             }
         }
     }
