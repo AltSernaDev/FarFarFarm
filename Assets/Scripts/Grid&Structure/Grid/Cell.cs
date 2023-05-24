@@ -9,3 +9,10 @@ public class Cell : MonoBehaviour
     public bool occupied;
     public Structure structure;
 }
+
+[System.Serializable]
+public class CellData
+{
+    public bool occupied;
+    public StructureData structureData;
+}

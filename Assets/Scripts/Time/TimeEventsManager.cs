@@ -4,10 +4,10 @@ using UnityEngine;
 using System;
 
 [System.Serializable]
-public class TimeEventsManager : MonoBehaviour
+public class TimeEventsManager : MonoBehaviour, IDataPersistence
 {
     public static TimeEventsManager Instance;
-    Dictionary<uint, DateTime> events = new Dictionary<uint, DateTime>();
+    SerilizableDictionary<uint, DateTime> events = new SerilizableDictionary<uint, DateTime>();
 
     public delegate void DoneEventsUpdate(uint key_);
     public static event DoneEventsUpdate OnDoneEvent;
@@ -82,5 +82,15 @@ public class TimeEventsManager : MonoBehaviour
         while (events.ContainsKey(id));
 
         return id;
+    }
+
+    public void Save()
+    {
+        PersistenceManager.Instance.data.Events = events;
+    }
+
+    public void Load()
+    {
+        events = PersistenceManager.Instance.data.Events;
     }
 }

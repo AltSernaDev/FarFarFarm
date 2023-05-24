@@ -50,3 +50,10 @@ public class Grid : MonoBehaviour
         }        
     }
 }
+
+[System.Serializable]
+public class GridData
+{
+    public bool unlock;
+    public CellData[,] cellsData;
+}

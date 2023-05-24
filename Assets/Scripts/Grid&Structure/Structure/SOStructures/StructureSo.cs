@@ -19,3 +19,10 @@ public class StructureSo : ScriptableObject
     public float levelUpPriceMultiplier = 0.5f;
     public float levelUpTimeMultiplier = 0.5f;
 }
+
+public enum StructureType
+{
+    Tree,
+    Barn, 
+    House
+}

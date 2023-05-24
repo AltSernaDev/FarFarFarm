@@ -1,8 +1,10 @@
 using System;
+using System.IO;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Newtonsoft.Json;
 
 public class PersistenceManager : MonoBehaviour
 {
@@ -12,7 +14,9 @@ public class PersistenceManager : MonoBehaviour
 
     [SerializeField] string SaveName = "Save1";
 
-    public List<IDataPersistence> dataPersistenceList; // find and add new 
+    public List<IDataPersistence> dataPersistenceList;
+
+    public bool firstLoad = false;
 
     private void Awake()
     {
@@ -34,13 +38,13 @@ public class PersistenceManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
-            print(PlayerPrefs.GetString(SaveName));
+            print(File.ReadAllText(Application.dataPath + "/" + SaveName + ".txt"));
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            string dataString = JsonUtility.ToJson(new GameData()); 
+            string clearDataString = JsonConvert.SerializeObject(new GameData());
 
-            PlayerPrefs.SetString(SaveName, dataString);
+            File.WriteAllText(Application.dataPath + "/" + SaveName + ".txt", clearDataString);
 
             LoadAllData();
         }
@@ -60,15 +64,20 @@ public class PersistenceManager : MonoBehaviour
             dataPersistence.Save();
         }
 
-        string dataString = JsonUtility.ToJson(data); //encrypt this string
+        //string dataString = JsonUtility.ToJson(data); //encrypt this string
+        string dataString = JsonConvert.SerializeObject(data, Formatting.Indented);
 
-        PlayerPrefs.SetString(SaveName, dataString);
+        File.WriteAllText(Application.dataPath + "/" + SaveName + ".txt", dataString); 
+
+        //PlayerPrefs.SetString(SaveName, dataString);
     }
     void LoadAllData()
     {
-        string dataString = PlayerPrefs.GetString(SaveName); // decrypt this string
+        //string dataString = PlayerPrefs.GetString(SaveName); // decrypt this string
+        string dataString = File.ReadAllText(Application.dataPath + "/" + SaveName + ".txt");
 
-        data = JsonUtility.FromJson<GameData>(dataString);
+        //data = JsonUtility.FromJson<GameData>(dataString);
+        data = JsonConvert.DeserializeObject<GameData>(dataString);
 
         foreach (IDataPersistence dataPersistence in dataPersistenceList)
         {
@@ -78,11 +87,15 @@ public class PersistenceManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        SaveAllData();
+        print("Quit ---- firdtLoad = " + firstLoad);
+        if (firstLoad == true)
+            SaveAllData();
     }
     private void OnApplicationPause(bool pause)
     {
-        SaveAllData();
+        print("Pause ---- firdtLoad = " + firstLoad);
+        if (firstLoad == true)
+            SaveAllData();
     }
 }
 
@@ -90,12 +103,12 @@ public class PersistenceManager : MonoBehaviour
 public class GameData
 {
     //TimeEvents
-    public Dictionary<uint, DateTime> Events;
+    public SerilizableDictionary<uint, DateTime> Events;
 
     //Resources
     public int Gold;
     public int Cash;
 
     //Grid -> unlock - used - structures 
-    public Grid[,] grids; //check
+    public GridData[,] GridDaddy;
 }

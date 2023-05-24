@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Base 2x2
   m_EditorClassIdentifier: 
   name: Base 2x2
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: d60fd715349dd3d42bf55f4517ae5c13, type: 3}
   building: {fileID: 5175908379436387361, guid: d274f9f1917759748a507a7183c900b1,
     type: 3}
   size: 0200000002000000

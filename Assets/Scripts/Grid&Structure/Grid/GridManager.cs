@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridManager : MonoBehaviour
+public class GridManager : MonoBehaviour, IDataPersistence
 {
     [SerializeField] int[] size = new int[2];
     [SerializeField] int[] unlockSize = new int[2];
@@ -14,6 +14,11 @@ public class GridManager : MonoBehaviour
     [SerializeField] GameObject cellPrefab;
     [SerializeField] GameObject filterPrefab;
     [SerializeField] Material lockMaterial;
+
+    [SerializeField] StructureType[] structuresEnum;
+    [SerializeField] StructureSo[] structuresSO;
+
+    //List<UnlockGridCoodinate> unlockGrids = new List<UnlockGridCoodinate>();
 
     public static GridManager Instance;
 
@@ -104,9 +109,121 @@ public class GridManager : MonoBehaviour
                 k++;
             }
         }
-
-        //print("grid: " + currentGrid_.name + " / cell: " + currentCell_.name + " // occupied:" + currentCell_.occupied + " / lock: " + !currentGrid_.Unlock);
-
         return cells;
     }
+
+    public void Save()
+    {
+        print("Saving");
+        GridData[,] gridsData = new GridData[size[0], size[1]]; //gridDaddy
+
+        for (int i = 0; i < size[0]; i++)
+        {
+            for (int j = 0; j < size[1]; j++)
+            {
+                gridsData[i, j] = new GridData();  //grid
+
+                gridsData[i, j].unlock = grids[i, j].Unlock;
+                gridsData[i, j].cellsData = new CellData[gridSize[0], gridSize[1]];
+
+                for (int a = 0; a < gridSize[0]; a++)
+                {
+                    for (int b = 0; b < gridSize[1]; b++)
+                    {
+                        gridsData[i, j].cellsData[a, b] = new CellData(); //cell
+
+                        gridsData[i, j].cellsData[a, b].occupied = grids[i, j].cells[a, b].occupied;
+                        if (grids[i, j].cells[a, b].structure != null) //structure
+                        {
+                            gridsData[i, j].cellsData[a, b].structureData = new StructureData(); 
+
+                            gridsData[i, j].cellsData[a, b].structureData.type = grids[i, j].cells[a, b].structure.type;
+
+                            gridsData[i, j].cellsData[a, b].structureData.level = grids[i, j].cells[a, b].structure.Level;
+                            gridsData[i, j].cellsData[a, b].structureData.levelUpEventKey = grids[i, j].cells[a, b].structure.LevelUpEventKey;
+                            gridsData[i, j].cellsData[a, b].structureData.levelUpDate = grids[i, j].cells[a, b].structure.LevelUpDate;
+                        }
+                        else
+                            gridsData[i, j].cellsData[a, b].structureData = null;
+                    }
+                }
+            }
+        }
+
+        PersistenceManager.Instance.data.GridDaddy = gridsData;
+    }
+
+    public void Load()
+    {
+        StartCoroutine(LoadAsync());
+    }
+
+    IEnumerator LoadAsync()
+    {
+        yield return null;
+
+        print("Loading");
+        GridData[,] gridsData = PersistenceManager.Instance.data.GridDaddy;
+
+        for (int i = 0; i < size[0]; i++)
+        {
+            for (int j = 0; j < size[1]; j++)
+            {
+                grids[i, j].Unlock = gridsData[i, j].unlock;
+
+                for (int a = 0; a < gridSize[0]; a++)
+                {
+                    for (int b = 0; b < gridSize[1]; b++)
+                    {
+                        grids[i, j].cells[a, b].occupied = gridsData[i, j].cellsData[a, b].occupied;
+
+                        if (gridsData[i, j].cellsData[a, b].structureData != null)
+                        {
+                            if (grids[i, j].cells[a, b].structure == null)
+                            {
+                                grids[i, j].cells[a, b].structure = Instantiate(new GameObject(), grids[i, j].cells[a, b].transform.position, Quaternion.Euler(Vector3.zero)).AddComponent<Structure>();
+                            }                                
+
+                            grids[i, j].cells[a, b].structure.type = gridsData[i, j].cellsData[a, b].structureData.type;
+
+                            grids[i, j].cells[a, b].structure.LoadValues
+                                (gridsData[i, j].cellsData[a, b].structureData.level,
+                                gridsData[i, j].cellsData[a, b].structureData.levelUpEventKey,
+                                gridsData[i, j].cellsData[a, b].structureData.levelUpDate);
+                        }
+                        else
+                            grids[i, j].cells[a, b].structure = null;
+                    }
+                }
+            }
+        }
+
+        if(PersistenceManager.Instance.firstLoad == false)
+            PersistenceManager.Instance.firstLoad = true;
+    }
+
+    public StructureSo FromEnumToSO(StructureType? Enum_)
+    {
+        StructureSo SO_ = null;
+        for (int i = 0; i < structuresEnum.Length; i++)
+        {
+            if (structuresEnum[i] == Enum_)
+                SO_ = structuresSO[i];
+        }
+        return SO_;
+    }
+    public StructureType? FromSoToEnum(StructureSo SO_)
+    {
+        StructureType? Enum_ = null;
+
+        for (int i = 0; i < structuresSO.Length; i++)
+        {
+            if (structuresSO[i].name == SO_.name)
+                Enum_ = structuresEnum[i];
+        }
+
+
+        return Enum_;
+    }
 }
+

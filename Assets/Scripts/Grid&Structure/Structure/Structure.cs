@@ -7,13 +7,15 @@ using System;
 public class Structure : MonoBehaviour
 {
     public StructureSo structureSo;
+    public StructureType? type;
+
     int level = 0;
     int levelUpPrice;
     int levelUpTime;
 
     GameObject building;
 
-    IndividualCharacterControl buildFarm;
+    //IndividualCharacterControl buildFarm;
 
     uint? levelUpEventKey = null;
     DateTime? levelUpDate = null;
@@ -25,7 +27,7 @@ public class Structure : MonoBehaviour
     public uint? LevelUpEventKey { get => levelUpEventKey; }
     public DateTime? LevelUpDate { get => levelUpDate; }
 
-    private void Awake() //de pronto es un start. att: serna // culpa de serna
+    private void Start() //de pronto es un start. att: serna // culpa de serna
     {
         SetValues();
     }
@@ -41,6 +43,16 @@ public class Structure : MonoBehaviour
 
     private void SetValues()
     {
+        print(type);
+        print(structureSo);
+
+        if (structureSo == null && type == null)
+            return;
+        else if (structureSo != null && type == null)
+            type = GridManager.Instance.FromSoToEnum(structureSo);
+        else if (structureSo == null && type != null)
+            structureSo = GridManager.Instance.FromEnumToSO((StructureType)type);
+
         gameObject.name = structureSo.name;
         if (building != null)
             Destroy(building);
@@ -52,6 +64,14 @@ public class Structure : MonoBehaviour
         gameObject.GetComponent<BoxCollider>().size = new Vector3(structureSo.size[0], 1, structureSo.size[1]);
         gameObject.GetComponent<BoxCollider>().center = new Vector3(structureSo.size[0] / 2, 0.5f, structureSo.size[1] / 2);
         //gameObject.GetComponent<BoxCollider>().enabled = false;
+    }
+    public void LoadValues(int level_, uint? levelUpEventKey_, DateTime? levelUpDate_)
+    {
+        level = level_;
+        levelUpEventKey = levelUpEventKey_;
+        levelUpDate = levelUpDate_;
+
+        SetValues();
     }
 
     public void Demolish()
@@ -156,4 +176,12 @@ public class Structure : MonoBehaviour
     {
          building.GetComponent<IAction>().Action();
     }
+}
+[System.Serializable]
+public class StructureData
+{
+    public StructureType? type;
+    public int level;
+    public uint? levelUpEventKey;
+    public DateTime? levelUpDate;
 }
