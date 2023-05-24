@@ -2760,6 +2760,8 @@ MonoBehaviour:
   gridSize: 0a0000000a000000
   cellPrefab: {fileID: 2376728424783700638, guid: 956832f09eab0d744a1d0d68dcd0d551,
     type: 3}
+  baseStructurePrefab: {fileID: 7091809049032328649, guid: a11fde16fa1037948bf067f19204610a,
+    type: 3}
   filterPrefab: {fileID: 2787096229106506311, guid: aa5c8d7bde473794db19a1880e4b1ed0,
     type: 3}
   lockMaterial: {fileID: 2100000, guid: ee54477ea5844244287199bfc852fa5b, type: 2}

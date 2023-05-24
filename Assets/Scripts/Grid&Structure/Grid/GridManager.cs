@@ -12,6 +12,7 @@ public class GridManager : MonoBehaviour, IDataPersistence
     [SerializeField] int[] gridSize = new int[2];
 
     [SerializeField] GameObject cellPrefab;
+    [SerializeField] GameObject baseStructurePrefab;
     [SerializeField] GameObject filterPrefab;
     [SerializeField] Material lockMaterial;
 
@@ -181,7 +182,7 @@ public class GridManager : MonoBehaviour, IDataPersistence
                         {
                             if (grids[i, j].cells[a, b].structure == null)
                             {
-                                grids[i, j].cells[a, b].structure = Instantiate(new GameObject(), grids[i, j].cells[a, b].transform.position, Quaternion.Euler(Vector3.zero)).AddComponent<Structure>();
+                                grids[i, j].cells[a, b].structure = Instantiate(baseStructurePrefab, grids[i, j].cells[a, b].transform.position, Quaternion.Euler(Vector3.zero)).GetComponent<Structure>();
                             }                                
 
                             grids[i, j].cells[a, b].structure.type = gridsData[i, j].cellsData[a, b].structureData.type;
