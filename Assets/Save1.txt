@@ -1,7 +1,7 @@
 {
   "Events": {},
   "Gold": 5000,
-  "Cash": 49600,
+  "Cash": 56200,
   "GridDaddy": [
     [
       {
