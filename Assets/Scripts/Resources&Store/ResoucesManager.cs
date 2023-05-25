@@ -111,6 +111,9 @@ public class ResoucesManager : MonoBehaviour, IDataPersistence
     {
         PersistenceManager.Instance.data.Gold = gold;
         PersistenceManager.Instance.data.Cash = cash;
+        PersistenceManager.Instance.data.WheatCurrentStorage = wheatCurrentStorage;
+        PersistenceManager.Instance.data.MilkCurrentStorage = milkCurrentStorage;
+        PersistenceManager.Instance.data.EggsCurrentStorage = eggsCurrentStorage;
 
         if (OnValueChange != null)
             OnValueChange(cash, gold);
@@ -120,6 +123,9 @@ public class ResoucesManager : MonoBehaviour, IDataPersistence
     {
         gold = PersistenceManager.Instance.data.Gold;
         cash = PersistenceManager.Instance.data.Cash;
+        wheatCurrentStorage = PersistenceManager.Instance.data.WheatCurrentStorage;
+        milkCurrentStorage = PersistenceManager.Instance.data.MilkCurrentStorage;
+        eggsCurrentStorage = PersistenceManager.Instance.data.EggsCurrentStorage;
 
         if (OnValueChange != null)
             OnValueChange(cash, gold);
