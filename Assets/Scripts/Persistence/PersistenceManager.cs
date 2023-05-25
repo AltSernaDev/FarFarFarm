@@ -112,6 +112,7 @@ public class GameData
     //Resources
     public int Gold;
     public int Cash;
+    public int WheatCurrentStorage, MilkCurrentStorage, EggsCurrentStorage;
 
     //Grid -> unlock - used - structures 
     public GridData[,] GridDaddy;
