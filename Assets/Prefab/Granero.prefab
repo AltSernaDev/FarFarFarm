@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8348232748220356750}
   - component: {fileID: 6469366679478208676}
+  - component: {fileID: 6378628017462681088}
   m_Layer: 0
   m_Name: Granero
   m_TagString: Untagged
@@ -53,6 +54,18 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -2.01, y: 1.6, z: -1.6}
   m_TimeToStationary: 0.5
+--- !u!114 &6378628017462681088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6299262775027387593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47d45e79a5acc8044b5a1fec501563e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &709462226785330962
 PrefabInstance:
   m_ObjectHideFlags: 0

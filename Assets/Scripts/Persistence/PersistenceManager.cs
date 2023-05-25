@@ -30,7 +30,7 @@ public class PersistenceManager : MonoBehaviour
         LoadAllData();
     }
 
-    private void Update() ///////// temp
+    /*private void Update() ///////// temp
     {
         if (Input.GetKeyDown(KeyCode.O))
         {
@@ -48,7 +48,7 @@ public class PersistenceManager : MonoBehaviour
 
             LoadAllData();
         }
-    }
+    }*/
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()
     {
@@ -73,6 +73,10 @@ public class PersistenceManager : MonoBehaviour
     }
     void LoadAllData()
     {
+        if (!File.Exists(Application.dataPath + "/" + SaveName + ".txt"))
+        {
+            //File.WriteAllText(Application.dataPath + "/" + SaveName + ".txt", JsonConvert.SerializeObject( ///  data  ///, Formatting.Indented));
+        }
         //string dataString = PlayerPrefs.GetString(SaveName); // decrypt this string
         string dataString = File.ReadAllText(Application.dataPath + "/" + SaveName + ".txt");
 

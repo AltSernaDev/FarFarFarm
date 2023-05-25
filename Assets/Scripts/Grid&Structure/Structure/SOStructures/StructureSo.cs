@@ -22,7 +22,9 @@ public class StructureSo : ScriptableObject
 
 public enum StructureType
 {
-    Tree,
-    Barn, 
-    House
+    WheatField, //produces: wheat 
+    ChickenCoop, //produces: eggs - requiers: wheat
+    Corral, //produces: milk - requiers: wheat
+    Barn, //storage
+    House //Operation Base
 }

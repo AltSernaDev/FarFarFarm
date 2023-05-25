@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5854fc291063b934e9753ceee3bd2dba, type: 3}
-  m_Name: BigHouse01
+  m_Name: ChickenCoop
   m_EditorClassIdentifier: 
-  name: Big house (Pink)
+  name: Chicken Coop
   sprite: {fileID: 0}
-  building: {fileID: 6244527522073386848, guid: 1f95c8b9a5e78eb44b835db9425f4864,
+  building: {fileID: 4603268447855147873, guid: 24303c23647d3684e8d921bcc7df0a42,
     type: 3}
-  size: 0500000004000000
-  price: 250
-  constructionTime: 30
+  size: 0400000004000000
+  price: 100
+  constructionTime: 10
   initialLevelUpPrice: 50
-  initialLevelUpTime: 45
+  initialLevelUpTime: 10
   levelUpPriceMultiplier: 0.5
   levelUpTimeMultiplier: 0.5
