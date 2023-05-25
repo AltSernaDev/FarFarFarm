@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5854fc291063b934e9753ceee3bd2dba, type: 3}
-  m_Name: Garage
+  m_Name: House
   m_EditorClassIdentifier: 
-  name: Garage
+  name: House
   sprite: {fileID: 0}
-  building: {fileID: 4240808096053954977, guid: ed3a0c35d420fa84db509c56e6e30441,
+  building: {fileID: 7143582816301933978, guid: fe9a263c8a1d25e4aa0a422c1c0cc43c,
     type: 3}
-  size: 0400000003000000
-  price: 100
-  constructionTime: 10
+  size: 0500000004000000
+  price: 250
+  constructionTime: 30
   initialLevelUpPrice: 50
-  initialLevelUpTime: 10
+  initialLevelUpTime: 45
   levelUpPriceMultiplier: 0.5
   levelUpTimeMultiplier: 0.5

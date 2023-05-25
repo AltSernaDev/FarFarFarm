@@ -16,7 +16,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   building: {fileID: 6299262775027387593, guid: 52f56164f03c5f74a9ef40dcdbd78cf7,
     type: 3}
-  size: 0400000002000000
+  size: 0400000003000000
   price: 120
   constructionTime: 10
   initialLevelUpPrice: 50

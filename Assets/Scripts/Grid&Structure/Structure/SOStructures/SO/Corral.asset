@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5854fc291063b934e9753ceee3bd2dba, type: 3}
-  m_Name: BigHouse02
+  m_Name: Corral
   m_EditorClassIdentifier: 
-  name: Big house (Pink)
+  name: Corral
   sprite: {fileID: 0}
-  building: {fileID: 5307126445377009582, guid: d94339036dd16a64086fae9b733c0ba6,
+  building: {fileID: 8375059716778361866, guid: 44e089a39a31f9343941d8cbc62efde7,
     type: 3}
-  size: 0500000004000000
-  price: 250
-  constructionTime: 30
+  size: 0400000004000000
+  price: 100
+  constructionTime: 10
   initialLevelUpPrice: 50
-  initialLevelUpTime: 45
+  initialLevelUpTime: 10
   levelUpPriceMultiplier: 0.5
   levelUpTimeMultiplier: 0.5

@@ -59,18 +59,6 @@
               "structureData": null
             },
             {
-              "occupied": true,
-              "structureData": null
-            },
-            {
-              "occupied": true,
-              "structureData": null
-            },
-            {
-              "occupied": true,
-              "structureData": null
-            },
-            {
               "occupied": false,
               "structureData": null
             },
@@ -80,36 +68,6 @@
             },
             {
               "occupied": false,
-              "structureData": null
-            },
-            {
-              "occupied": false,
-              "structureData": null
-            },
-            {
-              "occupied": false,
-              "structureData": null
-            }
-          ],
-          [
-            {
-              "occupied": false,
-              "structureData": null
-            },
-            {
-              "occupied": true,
-              "structureData": null
-            },
-            {
-              "occupied": true,
-              "structureData": null
-            },
-            {
-              "occupied": true,
-              "structureData": null
-            },
-            {
-              "occupied": true,
               "structureData": null
             },
             {
@@ -139,22 +97,6 @@
               "structureData": null
             },
             {
-              "occupied": true,
-              "structureData": null
-            },
-            {
-              "occupied": true,
-              "structureData": null
-            },
-            {
-              "occupied": true,
-              "structureData": null
-            },
-            {
-              "occupied": true,
-              "structureData": null
-            },
-            {
               "occupied": false,
               "structureData": null
             },
@@ -168,32 +110,6 @@
             },
             {
               "occupied": false,
-              "structureData": null
-            },
-            {
-              "occupied": false,
-              "structureData": null
-            }
-          ],
-          [
-            {
-              "occupied": false,
-              "structureData": null
-            },
-            {
-              "occupied": true,
-              "structureData": null
-            },
-            {
-              "occupied": true,
-              "structureData": null
-            },
-            {
-              "occupied": true,
-              "structureData": null
-            },
-            {
-              "occupied": true,
               "structureData": null
             },
             {
@@ -223,19 +139,103 @@
               "structureData": null
             },
             {
-              "occupied": true,
+              "occupied": false,
               "structureData": null
             },
             {
-              "occupied": true,
+              "occupied": false,
               "structureData": null
             },
             {
-              "occupied": true,
+              "occupied": false,
               "structureData": null
             },
             {
-              "occupied": true,
+              "occupied": false,
+              "structureData": null
+            },
+            {
+              "occupied": false,
+              "structureData": null
+            },
+            {
+              "occupied": false,
+              "structureData": null
+            },
+            {
+              "occupied": false,
+              "structureData": null
+            },
+            {
+              "occupied": false,
+              "structureData": null
+            },
+            {
+              "occupied": false,
+              "structureData": null
+            }
+          ],
+          [
+            {
+              "occupied": false,
+              "structureData": null
+            },
+            {
+              "occupied": false,
+              "structureData": null
+            },
+            {
+              "occupied": false,
+              "structureData": null
+            },
+            {
+              "occupied": false,
+              "structureData": null
+            },
+            {
+              "occupied": false,
+              "structureData": null
+            },
+            {
+              "occupied": false,
+              "structureData": null
+            },
+            {
+              "occupied": false,
+              "structureData": null
+            },
+            {
+              "occupied": false,
+              "structureData": null
+            },
+            {
+              "occupied": false,
+              "structureData": null
+            },
+            {
+              "occupied": false,
+              "structureData": null
+            }
+          ],
+          [
+            {
+              "occupied": false,
+              "structureData": null
+            },
+            {
+              "occupied": false,
+              "structureData": null
+            },
+            {
+              "occupied": false,
+              "structureData": null
+            },
+            {
+              "occupied": false,
+              "structureData": null
+            },
+            {
+              "occupied": false,
               "structureData": null
             },
             {

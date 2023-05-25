@@ -13,8 +13,15 @@ public class ResoucesManager : MonoBehaviour, IDataPersistence
     public delegate void ResoucesAction(int cash, int gold);
     public static event ResoucesAction OnValueChange;
 
+    int wheatMaxStorage, milkMaxStorage, eggsMaxStorage;
+    public int wheatCurrentStorage, milkCurrentStorage, eggsCurrentStorage;
+
     public int Gold { get => gold;}
     public int Cash { get => cash;}
+
+    public int WheatMaxStorage { get => wheatMaxStorage; }
+    public int MilkMaxStorage { get => milkMaxStorage; }
+    public int EggsMaxStorage { get => eggsMaxStorage; }
 
     private void Awake()
     {
@@ -22,6 +29,13 @@ public class ResoucesManager : MonoBehaviour, IDataPersistence
             Destroy(this);
         else
             Instance = this;
+    }
+
+    public void UpadateStorage(int level)
+    {
+        wheatMaxStorage = (int)(WheatMaxStorage * (((level - 1) / 4) + 1));
+        milkMaxStorage = (int)(MilkMaxStorage * (((level - 1) / 4) + 1));
+        eggsMaxStorage = (int)(EggsMaxStorage * (((level - 1) / 4) + 1));
     }
 
     private void Start()

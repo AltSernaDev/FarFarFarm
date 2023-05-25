@@ -1725,6 +1725,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17d15c45746f47d4c8ae71a1cb6db448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wheatCurrentStorage: 0
+  milkCurrentStorage: 0
+  eggsCurrentStorage: 0
 --- !u!114 &837834796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2689,10 +2692,12 @@ MonoBehaviour:
   filterPrefab: {fileID: 2787096229106506311, guid: aa5c8d7bde473794db19a1880e4b1ed0,
     type: 3}
   lockMaterial: {fileID: 2100000, guid: ee54477ea5844244287199bfc852fa5b, type: 2}
-  structuresEnum: 000000000100000002000000
+  structuresEnum: 0000000001000000020000000300000004000000
   structuresSO:
-  - {fileID: 11400000, guid: 93a2cb9e3f261e24fb31e86f82cda6ff, type: 2}
-  - {fileID: 11400000, guid: b46996e3b3782ec46b3080b9d097df90, type: 2}
+  - {fileID: 11400000, guid: 2ad0b94a4113d2e41b7188129b3dd6f4, type: 2}
+  - {fileID: 11400000, guid: f80a77cfce7e9ad42abd124c03eca626, type: 2}
+  - {fileID: 11400000, guid: fa527653432ebac45ba6e3f726c4909a, type: 2}
+  - {fileID: 11400000, guid: fa527653432ebac45ba6e3f726c4909a, type: 2}
   - {fileID: 11400000, guid: fa527653432ebac45ba6e3f726c4909a, type: 2}
 --- !u!4 &1785668315
 Transform:

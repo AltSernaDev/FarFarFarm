@@ -6,7 +6,7 @@ using System;
 [System.Serializable][RequireComponent(typeof(BoxCollider))]
 public class Structure : MonoBehaviour
 {
-    public StructureSo structureSo;
+    public StructureSo structureSo; //on change SetValues()
     public StructureType? type;
 
     int level = 0;
@@ -63,6 +63,10 @@ public class Structure : MonoBehaviour
 
         gameObject.GetComponent<BoxCollider>().size = new Vector3(structureSo.size[0], 1, structureSo.size[1]);
         gameObject.GetComponent<BoxCollider>().center = new Vector3(structureSo.size[0] / 2, 0.5f, structureSo.size[1] / 2);
+
+        if (building.GetComponent<IAction>() != null)
+            building.GetComponent<IAction>().SetValues(Level);
+
         //gameObject.GetComponent<BoxCollider>().enabled = false;
     }
     public void LoadValues(int level_, uint? levelUpEventKey_, DateTime? levelUpDate_)

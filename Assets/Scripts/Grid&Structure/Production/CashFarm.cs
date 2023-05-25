@@ -33,7 +33,10 @@ public class CashFarm : MonoBehaviour, IAction
     }
     public void Action()
     {
-        //if
         ResoucesManager.Instance.AddCash((int)currentStorage);
+    }
+
+    public void SetValues(int level)
+    {
     }
 }
