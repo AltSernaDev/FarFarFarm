@@ -13,6 +13,7 @@ public class PersistenceManager : MonoBehaviour
     public GameData data;
 
     [SerializeField] string SaveName = "Save1";
+    [SerializeField] TextAsset BaseLevel;
 
     public List<IDataPersistence> dataPersistenceList;
 
