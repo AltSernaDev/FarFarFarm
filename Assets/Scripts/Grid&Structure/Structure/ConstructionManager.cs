@@ -17,6 +17,7 @@ public class ConstructionManager : MonoBehaviour
     public bool constructionMode = false;
 
     [SerializeField] ConstructionZone constructionZone;
+    [SerializeField] GameObject baseStructurePrefab;
     public Structure selectStructure;
     Structure currentStructure;
 
@@ -107,7 +108,21 @@ public class ConstructionManager : MonoBehaviour
             selectStructure = null;
         }
     }
-    public void Instanciate2x2_TEMP(GameObject a)
+    public void CreateNewStructure(StructureSo structureSO_)
+    {
+        if (selectStructure != null)
+        {
+            if (selectStructure.Level == 0)
+                Destroy(selectStructure.gameObject);
+            Unselect_();
+        }
+        currentStructure = Instantiate(baseStructurePrefab).GetComponent<Structure>();
+        currentStructure.structureSo = structureSO_;
+        currentStructure.SetValues();
+        Select_();
+        print(selectStructure.gameObject.transform.parent.name);
+    }
+    /*public void Instanciate2x2_TEMP(GameObject a)
     {
         if (selectStructure != null)
         {
@@ -118,5 +133,5 @@ public class ConstructionManager : MonoBehaviour
         currentStructure = Instantiate(a).GetComponent<Structure>();
         Select_();
         print(selectStructure.gameObject.transform.parent.name);
-    }
+    }*/
 }

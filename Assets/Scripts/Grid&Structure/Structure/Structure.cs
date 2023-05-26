@@ -41,7 +41,7 @@ public class Structure : MonoBehaviour
         TimeEventsManager.OnDoneEvent -= FinishLevelUp;
     }
 
-    private void SetValues()
+    public void SetValues()
     {
         print(type);
         print(structureSo);

@@ -17,7 +17,7 @@ MonoBehaviour:
   building: {fileID: 6299262775027387593, guid: 52f56164f03c5f74a9ef40dcdbd78cf7,
     type: 3}
   size: 0400000003000000
-  price: 0
+  price: 1
   constructionTime: 10
   initialLevelUpPrice: 1500
   initialLevelUpTime: 10

@@ -13,7 +13,7 @@ public class PersistenceManager : MonoBehaviour
     public GameData data;
 
     [SerializeField] string SaveName = "Save1";
-    [SerializeField] TextAsset BaseLevel;
+    [SerializeField] TextAsset templateSave;
 
     public List<IDataPersistence> dataPersistenceList;
 
@@ -76,7 +76,7 @@ public class PersistenceManager : MonoBehaviour
     {
         if (!File.Exists(Application.dataPath + "/" + SaveName + ".txt"))
         {
-            //File.WriteAllText(Application.dataPath + "/" + SaveName + ".txt", JsonConvert.SerializeObject( ///  data  ///, Formatting.Indented));
+            File.WriteAllText(Application.dataPath + "/" + SaveName + ".txt", templateSave.text); /////
         }
         //string dataString = PlayerPrefs.GetString(SaveName); // decrypt this string
         string dataString = File.ReadAllText(Application.dataPath + "/" + SaveName + ".txt");
@@ -107,6 +107,7 @@ public class PersistenceManager : MonoBehaviour
 [Serializable]
 public class GameData
 {
+    public bool House;
     //TimeEvents
     public SerilizableDictionary<uint, DateTime> Events;
 
