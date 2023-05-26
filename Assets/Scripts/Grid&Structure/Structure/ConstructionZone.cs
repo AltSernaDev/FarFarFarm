@@ -20,6 +20,8 @@ public class ConstructionZone : MonoBehaviour
 
     Cell[] currentCells, newCells;
 
+    public GameObject botones;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -78,6 +80,7 @@ public class ConstructionZone : MonoBehaviour
     {
         dragCamera.enabled = true;
         dragObject.enabled = false;
+        botones.SetActive(true);
 
         size = gameObject.GetComponentInChildren<Structure>().structureSo.size;
 
@@ -122,6 +125,7 @@ public class ConstructionZone : MonoBehaviour
     {
         dragCamera.enabled = true;
         dragObject.enabled = false;
+        botones.SetActive(true);
 
         if (gameObject.GetComponentInChildren<Structure>().Level == 0)
         {

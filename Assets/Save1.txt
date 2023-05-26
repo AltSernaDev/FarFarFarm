@@ -1,4 +1,5 @@
 {
+  "House": false,
   "Events": {},
   "Gold": 5000,
   "Cash": 75648,
