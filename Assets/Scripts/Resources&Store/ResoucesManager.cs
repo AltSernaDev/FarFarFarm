@@ -13,7 +13,7 @@ public class ResoucesManager : MonoBehaviour, IDataPersistence
     public delegate void ResoucesAction(int cash, int gold);
     public static event ResoucesAction OnValueChange;
 
-    int wheatMaxStorage, milkMaxStorage, eggsMaxStorage;
+    [SerializeField] int wheatMaxStorage, milkMaxStorage, eggsMaxStorage;
     public int wheatCurrentStorage, milkCurrentStorage, eggsCurrentStorage;
 
     public int Gold { get => gold;}

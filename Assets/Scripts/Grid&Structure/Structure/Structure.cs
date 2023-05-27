@@ -64,8 +64,8 @@ public class Structure : MonoBehaviour
         gameObject.GetComponent<BoxCollider>().size = new Vector3(structureSo.size[0], 1, structureSo.size[1]);
         gameObject.GetComponent<BoxCollider>().center = new Vector3(structureSo.size[0] / 2, 0.5f, structureSo.size[1] / 2);
 
-        if (building.GetComponent<IAction>() != null)
-            building.GetComponent<IAction>().SetValues(Level);
+        if (building.GetComponentInChildren<IAction>() != null)
+            building.GetComponentInChildren<IAction>().SetValues(Level);
 
         //gameObject.GetComponent<BoxCollider>().enabled = false;
     }

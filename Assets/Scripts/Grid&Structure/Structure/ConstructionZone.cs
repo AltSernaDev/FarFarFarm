@@ -136,7 +136,7 @@ public class ConstructionZone : MonoBehaviour
             transform.GetChild(0).position = currentCells[0].transform.position;
 
             currentCells[0].structure = gameObject.GetComponentInChildren<Structure>();
-            for (int i = 0; i < newCells.Length; i++)
+            for (int i = 0; i < currentCells.Length; i++)
             {
                 currentCells[i].occupied = true;
             }
