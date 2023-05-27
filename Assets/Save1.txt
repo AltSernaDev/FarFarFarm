@@ -2,7 +2,7 @@
   "House": true,
   "Events": {},
   "Gold": 100,
-  "Cash": 850,
+  "Cash": 8975,
   "WheatCurrentStorage": 0,
   "MilkCurrentStorage": 0,
   "EggsCurrentStorage": 0,
@@ -6587,7 +6587,7 @@
               "occupied": true,
               "structureData": {
                 "type": 0,
-                "level": 2,
+                "level": 3,
                 "levelUpEventKey": null,
                 "levelUpDate": null
               }
@@ -6672,7 +6672,7 @@
               "occupied": true,
               "structureData": {
                 "type": 3,
-                "level": 1,
+                "level": 2,
                 "levelUpEventKey": null,
                 "levelUpDate": null
               }
