@@ -5373,6 +5373,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17d15c45746f47d4c8ae71a1cb6db448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wheatMaxStorage: 0
+  milkMaxStorage: 0
+  eggsMaxStorage: 0
   wheatCurrentStorage: 0
   milkCurrentStorage: 0
   eggsCurrentStorage: 0
@@ -5438,7 +5441,7 @@ MonoBehaviour:
     MilkCurrentStorage: 0
     EggsCurrentStorage: 0
   SaveName: Save1
-  templateSave: {fileID: 4900000, guid: a8c1989a404435d4ea6ca0da965832b0, type: 3}
+  templateSave: {fileID: 4900000, guid: e2a7862669c414e428073ed9f6be0fb1, type: 3}
   firstLoad: 0
 --- !u!1 &843815021
 GameObject:

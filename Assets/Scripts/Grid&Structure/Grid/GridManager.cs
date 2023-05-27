@@ -136,6 +136,10 @@ public class GridManager : MonoBehaviour, IDataPersistence
                         gridsData[i, j].cellsData[a, b].occupied = grids[i, j].cells[a, b].occupied;
                         if (grids[i, j].cells[a, b].structure != null) //structure
                         {
+                            if (grids[i, j].cells[a, b].structure.type == StructureType.House)
+                            {
+                                PersistenceManager.Instance.data.House = true;
+                            }
                             gridsData[i, j].cellsData[a, b].structureData = new StructureData(); 
 
                             gridsData[i, j].cellsData[a, b].structureData.type = grids[i, j].cells[a, b].structure.type;
@@ -180,6 +184,11 @@ public class GridManager : MonoBehaviour, IDataPersistence
 
                         if (gridsData[i, j].cellsData[a, b].structureData != null)
                         {
+                            if (gridsData[i, j].cellsData[a, b].structureData.type == StructureType.House)
+                            {
+                                PersistenceManager.Instance.data.House = true;
+                            }
+
                             if (grids[i, j].cells[a, b].structure == null)
                             {
                                 grids[i, j].cells[a, b].structure = Instantiate(baseStructurePrefab, grids[i, j].cells[a, b].transform.position, Quaternion.Euler(Vector3.zero)).GetComponent<Structure>();

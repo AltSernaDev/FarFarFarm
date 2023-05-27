@@ -78,6 +78,10 @@ public class PersistenceManager : MonoBehaviour
         {
             File.WriteAllText(Application.dataPath + "/" + SaveName + ".txt", templateSave.text); /////
         }
+        else if (JsonConvert.DeserializeObject<GameData>(File.ReadAllText(Application.dataPath + "/" + SaveName + ".txt")).House == false)
+        {
+            File.WriteAllText(Application.dataPath + "/" + SaveName + ".txt", templateSave.text);
+        }
         //string dataString = PlayerPrefs.GetString(SaveName); // decrypt this string
         string dataString = File.ReadAllText(Application.dataPath + "/" + SaveName + ".txt");
 

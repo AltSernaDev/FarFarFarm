@@ -1,7 +1,8 @@
 {
+  "House": true,
   "Events": {},
-  "Gold": 5000,
-  "Cash": 75648,
+  "Gold": 100,
+  "Cash": 1000,
   "WheatCurrentStorage": 0,
   "MilkCurrentStorage": 0,
   "EggsCurrentStorage": 0,
