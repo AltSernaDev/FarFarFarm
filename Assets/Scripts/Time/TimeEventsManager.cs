@@ -43,10 +43,17 @@ public class TimeEventsManager : MonoBehaviour, IDataPersistence
                 {
                     print("event «" + event_.Key + "» finish");
                     MoveToDone(event_.Key);
-                    events.Remove(event_.Key);
+                    //events.Remove(event_.Key);
                 }
                 else
                     print("event «" + event_.Key + "» in progress, " + (event_.Value - DateTime.Now) + " left");
+            }
+        }
+        if (doneEvents.Count > 0)
+        {
+            foreach (uint doneEvent_ in doneEvents)
+            {
+                events.Remove(doneEvent_);
             }
         }
     }
